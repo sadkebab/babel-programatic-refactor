@@ -20,8 +20,8 @@ run(
       ? getFilesInDirectory(targetPath)
       : [targetPath];
 
-    const updates = await Promise.all(filePaths.map(processFileAsync));
-    const updated = updates.filter((n) => n > 0);
+    const changesPerFile = await Promise.all(filePaths.map(processFileAsync));
+    const updated = changesPerFile.filter((n) => n > 0);
 
     console.log(
       `Finished! Made ${updated.reduce((a, c) => a + c, 0)} changes to ${updated.length} files.`,
